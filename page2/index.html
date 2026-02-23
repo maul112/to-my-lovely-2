@@ -4,13 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        .bg-pattern { mix-blend-mode: screen; }
+        body { overflow: hidden; }
+        .bg-pattern { position: absolute; pointer-events: none; z-index: 0; mix-blend-mode: screen; }
     </style>
 </head>
-<body style="background-color: black;">
-    <h1>Halaman 2</h1>
-    <img src="../assets/flower.jpeg" class="bg-pattern" alt="p">
+<body class="bg-[#B56B78]">
+    <div id="pattern-container" class="fixed inset-0 w-full h-full"></div>
+    <div class="flex w-full min-h-screen overflow-hidden p-6 md:p-10 bg-[#B56B78]">
+        <div data-aos="zoom-in" data-aos-delay="300" data-aos-duration="2000" class="m-auto max-w-6xl p-4 md:p-12 w-full h-full bg-[#A17C69] border-2 rounded-xl border-black">
+            <h1 class="text-2xl text-center font-bold">
+                Pertama Kali Ketemu
+            </h1>
+            <p class="my-8 text-center">
+                sayaanggg, ingett gaaa waktu kita pertama kali ketemuu (online🥲), kita waktu itu kek kita bener bener enggaaa kenal lhooo, cuman tidak sengaja aku follow ayaangg dari grup pendaki dan untungnya juga ayangg acc follow an ku😁. aku lupa tepatnya kapan aku follow ayaangg, tapii abis follow ituu aku enggaa langsung dm ayaangg karena bener bener yaaa iseng ajaa gituuu😅. bener bener follow doang gituu.
+            </p>
+            <div class="flex">
+                <a href="../" class="block w-fit mx-auto text-black border-3 border black rounded-full px-4 py-2">Kembali</a>
+                <a href="../page3" class="block w-fit mx-auto text-black border-3 font-bold animate-bounce border black rounded-full px-4 py-2 bg-[#6CA2C7]">Klik &lt;3</a>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+
+        function createRandomPattern() {
+            const container = document.getElementById('pattern-container');
+            const icons = "../assets/flower.png";
+            const count = 100;
+
+            for (let i = 0; i < count; i++) {
+                const img = document.createElement('img');
+                
+                img.src = icons;
+                img.className = 'bg-pattern';
+                
+                const top = Math.random() * 100;
+                const left = Math.random() * 100;
+                const size = Math.random() * (30 - 15) + 25;
+                const rotation = Math.random() * 360;
+
+                img.style.top = top + '%';
+                img.style.left = left + '%';
+                img.style.width = size + 'px';
+                img.style.transform = `rotate(${rotation}deg)`;
+                img.style.opacity = '0.8';
+
+                container.appendChild(img);
+            }
+        }
+
+        createRandomPattern();
+    </script>
 </body>
 </html>
